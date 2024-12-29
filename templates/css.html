@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+
+
+    
+        
+</head>
+
+<style>
+
+      
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        color: #ffffff;
+    }
+
+
+    header {
+display: flex; 
+justify-content: space-between; 
+align-items: center; /* Align items vertically in the center */
+padding: 20px 40px;
+border-bottom: 1px solid #ddd;
+background-color: #ffffff;
+margin-top: 70px;
+}
+
+    h1 {
+        font-family: 'roboto' sans-serif;
+        text-align: left;
+        font-weight: normal;
+        margin-left: 70px;
+        color: #bfbcbc;
+    }
+
+    .navbar ul {
+
+list-style:  none;
+ margin: 0;
+ font-family: sans serif Arial, Helvetica, sans-serif;
+ padding-right: 50px;
+ display:flex;
+ justify-content: flex-end;
+  gap: 30px; 
+  margin-top: 5px;
+  font-size: 20px;
+  color: #a29f9f;
+        }
+
+
+       
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #a29f9f;
+        }
+        nav a:hover {
+            color: #007BFF;
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+
+        
+        
+    </style>
+<header>
+    <div class="logo">
+        <h1>Paivi Mehraj</h1>
+    </div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/register">Register</a></li> <!-- Add this line -->
+        </ul>
+    </nav>
+</header>
+
+
+<section class="contact-section">
+    <form class="contact-form" action="/contact" method="POST">
+        <label for="message">Dear Paivi Mehraj,</label>
+        <textarea id="message" name="message" placeholder="Write your message here..." rows="11"></textarea>
+        
+        <label for="name">Best,</label>
+        <input type="text" id="name" name="name" placeholder="Your name">
+        <input type="email" id="email" name="email" placeholder="Your email">
+        
+        <button type="submit" class="btn">Send email</button>
+    </form>
+    <p class="email-note">
+        or find me at <a href="mailto:paivimehraj19@gmail.com">paivimehraj19@gmail.com</a>
+    </p>
+</section>
+
+    
+</body>
+</html>

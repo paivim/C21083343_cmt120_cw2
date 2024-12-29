@@ -4,31 +4,204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
-    <link rel="stylesheet" href="contact.css">
-    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
         
+
+    <style>
+
+        header {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; /* Align items vertically in the center */
+            padding: 20px 40px;
+            border-bottom: 1px solid #ddd;
+            background-color: #ffffff;
+            margin-top: 70px;
+        }
+        
+                h1 {
+                    font-family: 'roboto' sans-serif;
+                    text-align: left;
+                    font-weight:300px;
+                    margin-left: 70px;
+                    color: #bfbcbc;
+                }
+                
+        
+                h2 {
+        
+                    text-align: center;
+                    margin-top: 20px;
+                    color: #0c0c0c;
+                }
+        
+        
+                .navbar ul {
+        
+               list-style:  none;
+                margin: 0;
+                font-family: 'Roboto', sans-serif;
+                padding-right: 50px;
+                display:flex;
+                justify-content: flex-end;
+                 gap: 30px; 
+                 margin-top: 5px;
+                 font-size: 20px;
+                 color: #a29f9f;
+        
+        }
+                
+                 nav a {
+                    margin: 0 15px;
+                    text-decoration: none;
+                    color: #847b7b;
+                 }
+                 
+                   nav a:hover {
+                   color: #007BFF;
+                    }
+        
+                section {
+                    max-width: 80px;
+                    margin: 20px auto;
+                    padding: 20px;
+                    background: #fff;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                }
+            
+
+
+                form input[type="text"],
+                form input[type="email"],
+                form textarea {
+                width: 100%; 
+                padding: 10px; 
+                margin-bottom: 15px;
+                border: 1px solid #ddd; 
+                border-radius: 5px; 
+                font-size: 16px; 
+                box-sizing: border-box; 
+
+
+                form input:focus,
+                form textarea:focus {
+    border-color: #a29bfe; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(162, 155, 254, 0.5); /* Add subtle glow */
+}
+
+}
+
+form textarea {
+    height: 150px; /* Increase height for the message box */
+    resize: vertical; /* Allow users to resize only vertically */
+}
+
+.contact-layout {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: space-between; /* Add spacing between the form and flash messages */
+    gap: 20px; /* Space between form and message box */
+}
+
+.contact-form {
+    flex: 1; /* The form takes most of the available space */
+    max-width: 600px; /* Ensure the form has a defined max-width */
+}
+
+.flash-messages {
+    position: absolute; /* Or relative depending on your layout */
+    top: -20px; /* Adjust this value to position it above or next to the box */
+    right: 20px; /* Align to the right side */
+    background-color: #d4edda; /* Green success background */
+    border: 1px solid #c3e6cb;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #155724; /* Success text color */
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+
+
+
+
+            </style>
+        </head>
+        
+        
+        <body>
+        
+            <header>
+                <div class="logo">
+                    <h1>Paivi Mehraj</h1>
+                </div>
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/portfolio">Portfolio</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/register">Register</a></li> <!-- Add this line -->
+                    </ul>
+                </nav>
+
+               
+
+                
+            </header>
+
+
+
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/contact">Contact</a>
-    </nav>
+    
 
-    <div class="contact-form">
-        <h1>Contact Me</h1>
-        <form method="POST" action="/contact">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
+    <main>
+        <section class="contact-container">
+            <div class="flash-messages">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <h2>Contact Me</h2>
+            <p>If you have any questions, feel free to reach out using the form below.</p>
+            <form action="/send-message" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+        
+    </main>
 </body>
 </html>

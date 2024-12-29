@@ -1,94 +1,123 @@
 
-<style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-        nav {
-            text-align: center;
-            margin: 20px 0;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-        }
-        nav a:hover {
-            color: #007BFF;
-        }
-        section {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .project {
-            margin-bottom: 20px;
-        }
-        .project h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .project p {
-            margin-bottom: 10px;
-        }
-        .project a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        .project a:hover {
-            text-decoration: underline;
-        }
-    </style>
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 
 
+body {
+    
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #f7f6f6;
+    font-family: 'Roboto', sans-serif;
+}
 
-/* Hero Section Styling */
+header {
+    display: flex;
+    justify-content: space-between; /* Align logo and nav to opposite sides */
+    align-items: center; 
+    padding: 20px 40px;
+    background-color: #499ef3; /* Light background for header */
+    border-bottom: 1px solid #ddd;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+
+    
+}
+
+
+.logo h1 {
+    margin: 0;
+    font-weight: bold;
+    color: #a29f9f;
+}
+
+.navbar ul li {
+
+    display:inline
+}
+
+
+
+nav {
+    text-align: right;
+    margin: 20px 0;
+    list-style-type: none;
+    
+}
+
+
+
+.navbar ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #a29f9f;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #007BFF; /* Hover color for nav links */
+}
+
+/* Hero Section */
+
+
 .hero {
     text-align: center;
     padding: 100px 20px;
-    background: linear-gradient(135deg, #ade8f4, #caf0f8);
-    color: #023e8a;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+    background-color: #ffffff; /* Set background to white */
+    color: #333; /* Dark text color */
+    border-radius: 0; /* Remove rounded edges */
+    margin: 50px auto; /* Center the section with top margin */
+    font-family: 'Roboto', sans-serif; /* Ensure proper font */
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    font-weight: bold;
+    font-size: 10rem; /* Adjust size */
+    margin-bottom: 10px; /* Spacing below heading */
+    font-weight: bold; /* Bold for emphasis */
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    color: #034078;
+    font-size: 1.5rem; /* Slightly smaller than heading */
+    margin-top: 20px;
+    font-style: italic; /* Italic style for "can be viewed here" */
+    color: #444; /* Slightly lighter than the header */
 }
 
-.hero .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #0077b6;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
+
 
 .hero .btn:hover {
     background: #023e8a;
 }
+
+/* Content Section */
+section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.project a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+
+.project a:hover {
+    text-decoration: underline;
+}
+
+/* Additional Main Spacing */
+main {
+    margin: 20px 40px;
+}
+</style>

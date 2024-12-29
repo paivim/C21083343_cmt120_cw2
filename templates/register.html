@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+
+<style>
+
+header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; /* Align items vertically in the center */
+    padding: 20px 40px;
+    border-bottom: 1px solid #ddd;
+    background-color: #ffffff;
+    margin-top: 70px;
+}
+
+        h1 {
+            font-family: 'roboto' sans-serif;
+            text-align: left;
+            font-weight:300px;
+            margin-left: 70px;
+            color: #bfbcbc;
+        }
+        
+
+        h2 {
+
+            text-align: center;
+            margin-top: 20px;
+            color: #0c0c0c;
+        }
+
+
+        .navbar ul {
+
+       list-style:  none;
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        padding-right: 50px;
+        display:flex;
+        justify-content: flex-end;
+         gap: 30px; 
+         margin-top: 5px;
+         font-size: 20px;
+         color: #a29f9f;
+
+}
+        
+         nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #847b7b;
+         }
+         
+           nav a:hover {
+           color: #007BFF;
+            }
+
+        section {
+            max-width: 80px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+    </style>
+</head>
+
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Paivi Mehraj</h1>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/register">Register</a></li> <!-- Add this line -->
+            </ul>
+        </nav>
+        
+    </header>
+    <h2>Register</h2>
+    <form method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br>
+        <label for="confirm_password">Confirm Password:</label><br>
+        <input type="password" name="confirm_password" id="confirm_password" required><br>
+    
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

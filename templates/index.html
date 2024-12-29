@@ -2,37 +2,83 @@
 <html lang="en">
 <head>
 
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 
-    <style>
+       <style>
+
+      
+    
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #ffffff;
+            
         }
+
+    
+
+
+        header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; /* Align items vertically in the center */
+    padding: 20px 40px;
+    border-bottom: 1px solid #ddd;
+    background-color: #ffffff;
+    margin-top: 70px;
+}
+
         h1 {
+            font-family: "roboto" sans-serif;
+            text-align: left;
+            font-weight:300px;
+            margin-left: 70px;
+            color: #bfbcbc;
+            font-style:normal normal;
+        }
+        
+
+        h2 {
+
             text-align: center;
             margin-top: 20px;
+            color: #0c0c0c;
         }
-        nav {
-            text-align: center;
-            margin: 20px 0;
-        }
-        nav a {
+
+
+        .navbar ul {
+
+       list-style:  none;
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        padding-right: 50px;
+        display:flex;
+        justify-content: flex-end;
+         gap: 30px; 
+         margin-top: 5px;
+         font-size: 20px;
+         color: #a29f9f;
+
+}
+        
+         nav a {
             margin: 0 15px;
             text-decoration: none;
             color: #333;
-        }
-        nav a:hover {
-            color: #007BFF;
-        }
+         }
+         
+           nav a:hover {
+           color: #007BFF;
+            }
+
         section {
             max-width: 800px;
             margin: 20px auto;
@@ -41,78 +87,45 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .project {
-            margin-bottom: 20px;
-        }
-        .project h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .project p {
-            margin-bottom: 10px;
-        }
-        .project a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        .project a:hover {
-            text-decoration: underline;
-        }
+        
     </style>
 </head>
 <body>
-    <h1>Welcome to My Portfolio</h1>
-    <p style="text-align:center;">This is a showcase of my projects and skills.</p>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <section id="portfolio">
-        <div class="project">
-            <h2>HTML CSS website</h2>
-            <p>A personal website showcasing skills I have using HTMTL and CSS.</p>
-            <a href="#">View Project</a>
-        </div>
-        <div class="project">
-            <h2>Web Application App</h2>
-            <p>A web application showcasing a photo album with different animations</p>
-            <a href="#">View Project</a>
-        </div>
-        <div class="project">
-            <h2>E-commerce Website</h2>
-            <p>An online platform for purchasing products.</p>
-            <a href="#">View Project</a>
-        </div>
-        <div class="project">
-            <h2>Project One</h2>
-            <p>A description of project one.</p>
-            <a href="#">View Project</a>
-        </div>
-        <div class="project">
-            <h2>Project Two</h2>
-            <p>A description of project two.</p>
-            <a href="#">View Project</a>
-        </div>
 
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Dynamic Greeting</title>
-            <style>
-                .hero {
-                    text-align: center;
-                    padding: 50px;
-                    background-color: #f4f4f4;
-                }
-            </style>
-        </head>
-        <body>
-            <section class="hero">
-                <h1 id="greeting"></h1>
-                <p>Welcome to My Portfolio</p>
+    <header>
+        <div class="logo">
+            <h1>Paivi Mehraj</h1>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/register">Register</a></li> <!-- Add this line -->
+            </ul>
+        </nav>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+
+
+
+    </header>
+    
+    <section 
+    
+        
+            section class="hero">
+                <h2 id="greeting"></h2>
+                <p>My recent work and experiecne can be viewed here. </p>
             </section>
         
             <script>
@@ -123,16 +136,17 @@
                     let greeting = "Welcome to My Portfolio";
         
                     if (hours < 12) {
-                        greeting = "Good Morning! Welcome to My Portfolio";
+                        greeting = "Good Morning! My name is Paivi, welcome to my portfolio!";
                     } else if (hours < 18) {
-                        greeting = "Good Afternoon! Welcome to My Portfolio";
+                        greeting = "Good Afternoon! My name is Paivi, welcome to my portfolio!";
                     } else {
-                        greeting = "Good Evening! Welcome to My Portfolio";
+                        greeting = "Good Evening! My name is Paivi, welcome to my portfolio!";
                     }
         
                    
                     document.getElementById("greeting").innerText = greeting;
                 }
+
         
                 // Set the greeting when the page loads
                 window.onload = setGreeting;
