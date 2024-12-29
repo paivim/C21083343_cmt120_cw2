@@ -96,52 +96,22 @@ list-style:  none;
 </header>
 
 <body>
-   
- 
-    <div class="portfolio-container">
-        <!-- Top row -->
-        <div class="row">
-            <div class="project">
-                <div class="project-content">
-                    <h3>HTML CSS web application</h3>
-                    <p>A web application made with HTML CSS to create a photo gallery with animations .</p>
+    <main>
+        <div class="portfolio-container">
+            {% for i in range(0, projects|length, 2) %}
+            <div class="row">
+                {% for project in projects[i:i+2] %}
+                <div class="project">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    <a href="/project/{{ project.id }}">View Details</a>
                 </div>
+                {% endfor %}
             </div>
-            <div class="project">
-                <div class="project-content">
-                    <h3>HTML CSS website showcasing the contents of an module</h3>
-                    <p>A dynamic website which showed what was learned in a module on my course .</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
-    
-        <!-- Paragraph -->
-        <div class="description">
-            <p>This is an additional section describing the projects in more detail. It provides context or an overview of the projects above.</p>
-        </div>
-    
-        <!-- Bottom row -->
-        <div class="row">
-            <div class="project">
-                <div class="project-content">
-                    <h3>JP Morgan Software Engineering Simulation</h3>
-                    <p> A software engineering job simulation showing the demands of a software engineer.</p>
-                </div>
-            </div>
-            <div class="project">
-                <div class="project-content">
-                    <h3>Goldman Sacchs job simulation</h3>
-                    <p></p>
-                </div>
-            </div>
-        </div>
-    
-        <!-- Additional Section -->
-        <div class="additional-section">
-            <h3>Additional Writing Section</h3>
-            <p>This section can include more details, insights, or summaries about the work or other relevant information you'd like to share.</p>
-        </div>
-    </div>
+        
+    </main>
     
    
 </body>

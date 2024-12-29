@@ -1,9 +1,9 @@
-from flask import Flask
+from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from flask import request
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Needed for flash messages and CSRF protection
 
 # Configure the database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -11,7 +11,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Optional but recommended
 
 # Initialize the database
 db = SQLAlchemy(app)
-
 
 # Define the Project model
 class Project(db.Model):
@@ -29,8 +28,6 @@ class User(db.Model):
     def __repr__(self):
         return f'<User {self.username}>'
 
-
-
 # Create the database tables if they don't exist
 with app.app_context():
     db.create_all()
@@ -46,13 +43,21 @@ def contact():
         email = request.form['email']
         message = request.form['message']
         print(f"Name: {name}, Email: {email}, Message: {message}")
-        return "Thank you for your message!"
+        flash("Thank you for your message!", "success")
+        return redirect(url_for('contact'))
     return render_template('contact.html')
 
 @app.route('/portfolio')
 def portfolio():
-    projects = Project.query.all()  # Retrieve all projects from the database
+    projects = Project.query.all()  # Fetch all projects from the database
     return render_template('portfolio.html', projects=projects)
+
+@app.route('/project/<int:project_id>')
+def project_page(project_id):
+    project = Project.query.get_or_404(project_id)
+    print(f"Project ID: {project.id}, Title: {project.title}")
+    return render_template('project.html', project=project)
+
 
 @app.route('/debug_db')
 def debug_db():
@@ -69,8 +74,6 @@ def debug_db():
         ]
     }
 
-from flask import request, flash, redirect, url_for
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -82,27 +85,52 @@ def register():
 
         # Check if passwords match
         if password != confirm_password:
-            return "Passwords do not match!"
+            flash("Passwords do not match!", "danger")
+            return redirect(url_for('register'))
 
         # Check if the username already exists in the database
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
-            return "Username already exists!"
+            flash("Username already exists!", "danger")
+            return redirect(url_for('register'))
 
         # Check if the email already exists in the database
         existing_email = User.query.filter_by(email=email).first()
         if existing_email:
-            return "Email already exists!"
+            flash("Email already exists!", "danger")
+            return redirect(url_for('register'))
+
+        # Hash the password before saving it
+        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
 
         # Save the new user to the database
-        new_user = User(username=username, email=email, password=password)
+        new_user = User(username=username, email=email, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
 
-        return "Registration successful!"
+        flash("Registration successful!", "success")
+        return redirect(url_for('home'))
 
-    # Render the registration page for GET request
     return render_template('register.html')
+
+
+@app.route('/send-message', methods=['POST'])
+def send_message():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    message = request.form.get('message')
+
+    # Log or process the message
+    print(f"Message from {name} ({email}): {message}")
+
+    # Flash success message
+    flash("Your message has been sent successfully!", "success")
+    
+    # Redirect back to the contact page
+    return redirect(url_for('contact'))
+
+
+
 
 
 if __name__ == '__main__':

@@ -3,7 +3,7 @@
 <head>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
         </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,8 @@
             
         }
 
+    
+
 
         header {
     display: flex; 
@@ -35,11 +37,12 @@
 }
 
         h1 {
-            font-family: 'roboto' sans-serif;
+            font-family: "roboto" sans-serif;
             text-align: left;
             font-weight:300px;
             margin-left: 70px;
             color: #bfbcbc;
+            font-style:normal normal;
         }
         
 
@@ -102,6 +105,19 @@
             </ul>
         </nav>
         
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+
+
+
     </header>
     
     <section 
@@ -130,6 +146,7 @@
                    
                     document.getElementById("greeting").innerText = greeting;
                 }
+
         
                 // Set the greeting when the page loads
                 window.onload = setGreeting;
