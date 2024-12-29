@@ -1,30 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-        </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
 
-       <style>
+<style>
 
-      
-    
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            
-        }
-
-
-        header {
+header {
     display: flex; 
     justify-content: space-between; 
     align-items: center; /* Align items vertically in the center */
@@ -69,7 +53,7 @@
          nav a {
             margin: 0 15px;
             text-decoration: none;
-            color: #333;
+            color: #847b7b;
          }
          
            nav a:hover {
@@ -77,7 +61,7 @@
             }
 
         section {
-            max-width: 800px;
+            max-width: 80px;
             margin: 20px auto;
             padding: 20px;
             background: #fff;
@@ -87,6 +71,8 @@
         
     </style>
 </head>
+
+
 <body>
 
     <header>
@@ -103,41 +89,15 @@
         </nav>
         
     </header>
-    
-    <section 
-    
-        
-            section class="hero">
-                <h2 id="greeting"></h2>
-                <p>My recent work and experiecne can be viewed here. </p>
-            </section>
-        
-            <script>
-                // Function to determine the time of day and set the greeting
-                function setGreeting() {
-                    const now = new Date();
-                    const hours = now.getHours();
-                    let greeting = "Welcome to My Portfolio";
-        
-                    if (hours < 12) {
-                        greeting = "Good Morning! My name is Paivi, welcome to my portfolio!";
-                    } else if (hours < 18) {
-                        greeting = "Good Afternoon! My name is Paivi, welcome to my portfolio!";
-                    } else {
-                        greeting = "Good Evening! My name is Paivi, welcome to my portfolio!";
-                    }
-        
-                   
-                    document.getElementById("greeting").innerText = greeting;
-                }
-        
-                // Set the greeting when the page loads
-                window.onload = setGreeting;
-            </script>
-        </body>
-        </html>
-        
-    </section>
+    <h2>Register</h2>
+    <form method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br>
+        <button type="submit">Register</button>
+    </form>
 </body>
 </html>
-

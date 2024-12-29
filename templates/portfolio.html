@@ -4,81 +4,145 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}">
+
     
 </head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <a href="/home">Home</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/contact">Contact</a>
+
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #121111;
+        }
+
+
+        header {
+    display: flex;
+    justify-content: space-between; /* Align logo and nav to opposite sides */
+    align-items: center; 
+    padding: 20px 40px;
+    background-color: #ffffff; /* Light background for header */
+    border-bottom: 1px solid #ddd;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    margin-top: 70px;
+    
+    
+
+}
+h1 {
+            font-family: 'roboto' sans-serif;
+            text-align: left;
+
+            
+            color: #a29f9f;
+        }
+        
+
+ .navbar ul {
+
+list-style:  none;
+ margin: 0;
+ font-family: sans serif Arial, Helvetica, sans-serif;
+ padding-right: 50px;
+ display:flex;
+ justify-content: flex-end;
+  gap: 30px; 
+  margin-top: 5px;
+  font-size: 20px;
+  color: #a29f9f;
+        }
+
+
+       
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #a29f9f;
+        }
+        nav a:hover {
+            color: #007BFF;
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+ 
+    </style>
+
+<header>
+    <div class="logo">
+        <h1>Paivi Mehraj</h1>
+    </div>
+    <nav class="navbar">
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/register">Register</a></li> <!-- Add this line -->
+            </ul>
+        </nav>
     </nav>
+</header>
 
-    <section id="portfolio">
-        <div class="project">
-            <h2>HTML CSS website</h2>
-            <p>A personal website showcasing skills I have using HTMTL and CSS.</p>
-            <a href="#">View Project</a>
+<body>
+   
+ 
+    <div class="portfolio-container">
+        <!-- Top row -->
+        <div class="row">
+            <div class="project">
+                <div class="project-content">
+                    <h3>HTML CSS web application</h3>
+                    <p>A web application made with HTML CSS to create a photo gallery with animations .</p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-content">
+                    <h3>HTML CSS website showcasing the contents of an module</h3>
+                    <p>A dynamic website which showed what was learned in a module on my course .</p>
+                </div>
+            </div>
         </div>
-        <div class="project">
-            <h2>Web Application App</h2>
-            <p>A web application showcasing a photo album with different animations</p>
-            <a href="#">View Project</a>
+    
+        <!-- Paragraph -->
+        <div class="description">
+            <p>This is an additional section describing the projects in more detail. It provides context or an overview of the projects above.</p>
         </div>
-        <div class="project">
-            <h2>E-commerce Website</h2>
-            <p>An online platform for purchasing products.</p>
-            <a href="#">View Project</a>
+    
+        <!-- Bottom row -->
+        <div class="row">
+            <div class="project">
+                <div class="project-content">
+                    <h3>JP Morgan Software Engineering Simulation</h3>
+                    <p> A software engineering job simulation showing the demands of a software engineer.</p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-content">
+                    <h3>Goldman Sacchs job simulation</h3>
+                    <p></p>
+                </div>
+            </div>
         </div>
-        <div class="project">
-            <h2>Project One</h2>
-            <p>A description of project one.</p>
-            <a href="#">View Project</a>
+    
+        <!-- Additional Section -->
+        <div class="additional-section">
+            <h3>Additional Writing Section</h3>
+            <p>This section can include more details, insights, or summaries about the work or other relevant information you'd like to share.</p>
         </div>
-        <div class="project">
-            <h2>Project Two</h2>
-            <p>A description of project two.</p>
-            <a href="#">View Project</a>
-        </div>
-    <!-- Projects Section -->
-    <section class="projects">
-        <h1>My Projects</h1>
-        <ul>
-            <!-- Example Project 1 -->
-            <li>
-                <h2>HTML CSS Website</h2>
-                <p>A personal website showcasing skills using HTML and CSS.</p>
-                <a href="#" target="_blank">View Project</a>
-            </li>
-
-            <!-- Example Project 2 -->
-            <li>
-                <h2>Web Application App</h2>
-                <p>A web application showcasing a photo album with animations.</p>
-                <a href="#" target="_blank">View Project</a>
-            </li>
-
-            <!-- Example Project 3 -->
-            <li>
-                <h2>E-commerce Website</h2>
-                <p>An online platform for purchasing products.</p>
-                <a href="#" target="_blank">View Project</a>
-            </li>
-
-            <!-- Add more projects below as needed -->
-            <li>
-                <h2>Project One</h2>
-                <p>A description of project one.</p>
-                <a href="#" target="_blank">View Project</a>
-            </li>
-
-            <li>
-                <h2>Project Two</h2>
-                <p>A description of project two.</p>
-                <a href="#" target="_blank">View Project</a>
-            </li>
-        </ul>
-    </section>
+    </div>
+    
+   
 </body>
 </html>
