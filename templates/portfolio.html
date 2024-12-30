@@ -107,9 +107,21 @@ list-style:  none;
                     <a href="/project/{{ project.id }}">View Details</a>
                 </div>
                 {% endfor %}
+                <h3>Comments:</h3>
+                <ul>
+                    {% for comment in comments %}
+                        {% if comment.project_id == project.id %}
+                            <li>
+                                <strong>{{ comment.username }}</strong>: {{ comment.content }}
+                                <br>
+                                <small>{{ comment.date_created }}</small>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
             </div>
             {% endfor %}
-        </div>
+       
         
     </main>
     
