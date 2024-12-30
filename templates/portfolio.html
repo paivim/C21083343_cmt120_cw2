@@ -76,6 +76,22 @@ list-style:  none;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
+
+        .comment-form {
+            margin-top: 20px;
+        }
+        .comment-form input, .comment-form textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .comment-section {
+            margin-top: 20px;
+        }
+        .comment {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
  
     </style>
 
@@ -107,6 +123,30 @@ list-style:  none;
                     <a href="/project/{{ project.id }}">View Details</a>
                 </div>
                 {% endfor %}
+                <div class="comment-section">
+                    <h3>Comments:</h3>
+                    <ul>
+                        {% for comment in comments %}
+                            {% if comment.project_id == project.id %}
+                                <li class="comment">
+                                    <strong>{{ comment.username }}</strong>: {{ comment.content }}
+                                    <br>
+                                    <small>{{ comment.date_created }}</small>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="comment-form">
+                    <h3>Leave a Comment:</h3>
+                    <form action="{{ url_for('portfolio') }}" method="POST">
+                        <input type="hidden" name="project_id" value="{{ project.id }}">
+                        <input type="text" name="username" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="content" placeholder="Your Comment" required></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
             </div>
             {% endfor %}
         </div>

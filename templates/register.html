@@ -101,6 +101,38 @@ header {
         <input type="password" name="confirm_password" id="confirm_password" required><br>
     
         <button type="submit">Register</button>
+
+
+
+
+        <div>
+            <!-- Tabs for switching -->
+            <ul>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#register">Register</a></li>
+            </ul>
+        
+            <!-- Login Form -->
+            <div id="login">
+                <form action="{{ url_for('login') }}" method="post">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        
+            <!-- Register Form -->
+            <div id="register">
+                <form action="{{ url_for('register') }}" method="post">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="email" name="email" placeholder="Email">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="confirm_password" placeholder="Confirm Password">
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+        
     </form>
 </body>
 </html>

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Needed for flash messages and CSRF protection
@@ -8,6 +9,24 @@ app.secret_key = 'your_secret_key'  # Needed for flash messages and CSRF protect
 # Configure the database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Optional but recommended to silence warnings
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        # Find the user with the given username
+        user = User.query.filter_by(username=username).first()
+
+        # Check if the user exists and the password is correct
+        if user and check_password_hash(user.password, password):
+            flash("Login successful!", "success")
+            return redirect(url_for("home"))
+        else:
+            flash("Invalid username or password", "danger")
+
+    return render_template("login.html")
 
 # Initialize the database
 db = SQLAlchemy(app)
@@ -27,6 +46,18 @@ class User(db.Model):
 
     def __repr__(self):
         return f'<User {self.username}>'
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # Unique ID
+    username = db.Column(db.String(50), nullable=False)  # Username
+    email = db.Column(db.String(120), nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id', ondelete='CASCADE'), nullable=False)
+    content = db.Column(db.Text, nullable=False)  # Comment content
+
+    def __repr__(self):
+        return f'<Comment {self.id}>'
 
 # Create the database tables if they don't exist
 with app.app_context():
@@ -50,7 +81,8 @@ def contact():
 @app.route('/portfolio')
 def portfolio():
     projects = Project.query.all()  # Fetch all projects from the database
-    return render_template('portfolio.html', projects=projects)
+    comments = Comment.query.all()  # Fetch all comments from the database
+    return render_template('portfolio.html', projects=projects, comments=comments)
 
 @app.route('/project/<int:project_id>')
 def project_page(project_id):
@@ -90,16 +122,31 @@ def register():
 
         # Check if the username already exists in the database
         existing_user = User.query.filter_by(username=username).first()
+        
         if existing_user:
             flash("Username already exists!", "danger")
-            return redirect(url_for('register'))
-
-        # Check if the email already exists in the database
-        existing_email = User.query.filter_by(email=email).first()
-        if existing_email:
+        elif existing_email:
             flash("Email already exists!", "danger")
-            return redirect(url_for('register'))
+        elif password != confirm_password:
+            flash("Passwords do not match!", "danger")
 
+        elif len(username) < 2:
+            flash("Username must be at least 2 characters long!", "danger")
+        elif len(password1) < 6:
+            flash("Password must be at least 6 characters long!", "danger")
+        elif len(email) < 5:
+            flash("Email must be at least 5 characters long!", "danger")
+
+        else: 
+            hashed_password = generate_password_hash(password1, method='pbkdf2:sha256')
+            new_user = User(username=username, email=email, password=hashed_password)
+            db.session.add(new_user)
+            db.session.commit()
+            flash("Registration successful!", "success")
+            return redirect(url_for('home'))
+    
+
+       
         # Hash the password before saving it
         hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
 
@@ -112,6 +159,25 @@ def register():
         return redirect(url_for('home'))
 
     return render_template('register.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        # Find the user with the given username
+        user = User.query.filter_by(username=username).first()
+
+        # Check if the user exists and the password is correct
+        if user and check_password_hash(user.password, password):
+            flash("Login successful!", "success")
+            return redirect(url_for('home'))
+        else:
+            flash("Invalid username or password", "danger")
+
+    return render_template('login.html')
 
 
 @app.route('/send-message', methods=['POST'])
