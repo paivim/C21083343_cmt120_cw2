@@ -132,9 +132,11 @@ celerybeat.pid
 .venv
 env/
 venv/
+dynamic_web/
 ENV/
 env.bak/
 venv.bak/
+dynamic_web.bak/
 
 # Spyder project settings
 .spyderproject
