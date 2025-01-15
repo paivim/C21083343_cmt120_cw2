@@ -16,13 +16,13 @@ body {
 
 header {
     display: flex;
-    justify-content: space-between; /* Align logo and nav to opposite sides */
+    justify-content: space-between; 
     align-items: center; 
     padding: 20px 40px;
-    background-color: #499ef3; /* Light background for header */
+    background-color: #499ef3; 
     border-bottom: 1px solid #ddd;
     font-family: 'Roboto', sans-serif;
-    font-size: 10px;
+    font-size: 15px;
 
     
 }
@@ -59,39 +59,7 @@ nav {
 }
 
 .navbar ul li a:hover {
-    color: #007BFF; /* Hover color for nav links */
-}
-
-/* Hero Section */
-
-
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-    background-color: #ffffff; /* Set background to white */
-    color: #333; /* Dark text color */
-    border-radius: 0; /* Remove rounded edges */
-    margin: 50px auto; /* Center the section with top margin */
-    font-family: 'Roboto', sans-serif; /* Ensure proper font */
-}
-
-.hero h1 {
-    font-size: 10rem; /* Adjust size */
-    margin-bottom: 10px; /* Spacing below heading */
-    font-weight: bold; /* Bold for emphasis */
-}
-
-.hero p {
-    font-size: 1.5rem; /* Slightly smaller than heading */
-    margin-top: 20px;
-    font-style: italic; /* Italic style for "can be viewed here" */
-    color: #444; /* Slightly lighter than the header */
-}
-
-
-
-.hero .btn:hover {
-    background: #023e8a;
+    color: #007BFF; 
 }
 
 /* Content Section */
@@ -116,8 +84,8 @@ section {
     text-decoration: underline;
 }
 
-/* Additional Main Spacing */
+
 main {
     margin: 20px 40px;
 }
-</style>
+<style>
