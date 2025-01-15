@@ -172,6 +172,7 @@ h1 {
 </header>
 
 <body>
+
     {% if current_user.is_authenticated %}
   <p>Welcome, {{ current_user.username }}!</p>
 {% else %}
@@ -202,6 +203,37 @@ h1 {
 
 
                 
+
+    <main>
+        <div class="portfolio-container">
+            {% for i in range(0, projects|length, 2) %}
+            <div class="row">
+                {% for project in projects[i:i+2] %}
+                <div class="project">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    <a href="/project/{{ project.id }}">View Details</a>
+                </div>
+                {% endfor %}
+                <h3>Comments:</h3>
+                <ul>
+                    {% for comment in comments %}
+                        {% if comment.project_id == project.id %}
+                            <li>
+                                <strong>{{ comment.username }}</strong>: {{ comment.content }}
+                                <br>
+                                <small>{{ comment.date_created }}</small>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+       
+        
+    </main>
+    
+
    
 </body>
 </html>
