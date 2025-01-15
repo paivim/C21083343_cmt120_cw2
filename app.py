@@ -179,8 +179,12 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
         print("Tables created successfully!")
-
     
-    port = int(os.environ.get('PORT', 8080))
-    app.run(host='0.0.0.0', port=port, debug=True)
-
+    if os.environ.get('OPENSHIFT_PYTHON_IP'):
+        host = os.environ.get('OPENSHIFT_PYTHON_IP')
+        port = int(os.environ.get('OPENSHIFT_PYTHON_PORT', 8080))
+    else:
+        host = '0.0.0.0'
+        port = int(os.environ.get('PORT', 8080))
+    
+    app.run(host=host, port=port)
