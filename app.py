@@ -121,7 +121,7 @@ class Comment(db.Model):
         return f'<Comment {self.id}>'
 
     with app.app_context():
-    db.create_all()
+      db.create_all()
 
 @app.route('/')
 def home():
