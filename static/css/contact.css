@@ -10,20 +10,20 @@ body {
     padding: 0;
     background-color: #ffffff;
     color: #b6afaf;
+    font-weight: bold;
 
 }
 
 header {
     display: flex;
-    justify-content: space-between; /* Align logo and nav to opposite sides */
+    justify-content: space-between; 
     align-items: center; 
     padding: 20px 40px;
     background-color: #f8f9fa; 
     border-bottom: 1px solid #ddd;
     font-family: 'Roboto', sans-serif;
-    font-size: 10px;
+    font-size: 15px;
     font-weight: bold;
-    
     
     
 }
@@ -67,7 +67,7 @@ transition: color 0.3s ease;
 }
 
 .navbar ul li a:hover {
-color: #007BFF; /* Hover color for nav links */
+color: #007BFF; 
 }
 
 
@@ -86,42 +86,42 @@ section {
     max-width: 600px; 
     margin: 0 auto; 
     margin-top: 40px;
-    padding: 20px; /* Add some padding for spacing */
-    background-color: #fff; /* Optional: Add background for visibility */
-    border-radius: 8px; /* Optional: Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Shadow for depth */
+    padding: 20px; 
+    background-color: #fff; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .contact-form {
     display: flex;
-    flex-direction: column; /* Stack form elements vertically */
-    gap: 15px; /* Add space between form fields */
+    flex-direction: column; 
+    gap: 15px; 
 }
 
 .form-group label {
-    font-weight: bold; /* Make labels stand out */
+    font-weight: bold; 
 }
 
 .form-group input,
 .form-group textarea {
-    width: 100%; /* Ensure inputs take up full width of the container */
-    padding: 10px; /* Add padding for better usability */
-    border: 1px solid #ddd; /* Light border for visibility */
-    border-radius: 5px; /* Rounded edges */
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
 }
 
 .btn {
-    background-color: #f8a1d1; /* Change button color */
-    color: white; /* Button text color */
-    padding: 10px 15px; /* Button padding */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded edges */
-    cursor: pointer; /* Change cursor on hover */
-    font-size: 16px; /* Increase font size for better readability */
+    background-color: #f8a1d1; 
+    color: white; 
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
 }
 
 .btn:hover {
-    background-color: #d781ac; /* Slightly darker shade on hover */
+    background-color: #d781ac; 
 }
 
 

@@ -83,57 +83,83 @@
 }
 
 .portfolio-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 1400px;
-    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
+    gap: 5px; /* Space between boxes */
+    justify-items: center; /* Center the boxes horizontally */
     padding: 20px;
-    
+    margin: 0 auto:
+
 }
+
 .project {
-    width: 45%; /* To ensure two boxes per row */
-    margin: 2% auto; /* Add some spacing */
-    background-color: #f0f4ff; /* Default color */
+    width: 60%; 
+    margin: 2% auto; 
+    
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+    transition: transform 0.3s, box-shadow 0.3s; 
 }
 
-.row .project:nth-of-type(1) {
-    background-color: #f0f4ff; /* Light purple */
+
+.project-box:nth-of-type(1) {
+    background-color: #e8cbe5; 
 }
 
-.row .project:nth-of-type(2) {
-    background-color: #eef9ff; /* Light blue */
+.project-box:nth-of-type(2) {
+    background-color: #c1dbea; 
 }
 
-.row:nth-of-type(2) .project:nth-of-type(1) {
-    background-color: #f8f1ff; /* Light lavender */
+.project-box:nth-of-type(3) {
+    background-color: #cba2e3; 
 }
 
-.row:nth-of-type(2) .project:nth-of-type(2) {
-    background-color: #eefcff; /* Pale greenish-blue */
+.project-box:nth-of-type(4) {
+    background-color: #edabc1; 
 }
+
+/* Hover effect */
+.project-box:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15); 
+}
+
 
 .project:hover {
-    transform: scale(1.03); /* Slight zoom effect */
+    transform: scale(1.03); 
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
 }
 
 
 .project:hover {
-    transform: scale(1.03); /* Slight zoom effect */
+    transform: scale(1.03); 
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
 }
 
-
-.row {
+  
+  .project-box {
+    width: 300px; 
+    height: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 90px; /
+  }
+  
 
 .project {
     flex: 1;
@@ -142,7 +168,7 @@
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    min-height: 700px;
+   
     width: 800px
 }
 
@@ -175,12 +201,3 @@
     padding: 1rem;
 }
 
-.description,
-.additional-section {
-    max-width: 800px;
-    text-align: center;
-    padding: 1rem;
-    background: #fafafa;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}

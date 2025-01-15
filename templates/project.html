@@ -25,13 +25,13 @@
 
 
         header {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; /* Align items vertically in the center */
-    padding: 20px 40px;
-    border-bottom: 1px solid #ddd;
-    background-color: #ffffff;
-    margin-top: 70px;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 40px;
+            border-bottom: 1px solid #ddd;
+            background-color: #ffffff;
+            margin-top: 70px;
 }
 
         h1 {
@@ -93,13 +93,14 @@
     margin: 0 auto;
 }
 
-.overview-container h2 {
-    font-size: 36px; /* Adjust the size as needed */
+.overview-container h2 { 
+
+    font-size: 36px; 
     margin-bottom: 20px;
 }
 
 .overview-text {
-    font-size: 20px; /* Adjust the size as needed */
+    font-size: 20px; 
     line-height: 1.6;
     margin-bottom: 20px;
 }
@@ -122,16 +123,51 @@
 
     
 <body>
-    <header>
-        <h1>{{ project.title }}</h1>
-    </header>
-    <main>
-        <section class="project-content">
+    
+
+    <main class="project-page">
+        <!-- Project Details -->
+        <section class="project-details">
+            <h1>{{ project.title }}</h1>
             <p>{{ project.description }}</p>
             {% if project.link %}
-                <a href="{{ project.link }}" target="_blank">Visit Project</a>
+                <a href="{{ project.link }}" target="_blank" class="project-link">Visit Project</a>
+            {% endif %}
+        </div>
+    </div>
+    
+        
+    
+        <section class="comments-section">
+            <h2>Comments</h2>
+        
+            {% if comments %}
+                <ul>
+                    {% for comment in comments %}
+                        <li>
+                            <strong>{{ comment.username }}</strong>: {{ comment.content }}
+                            <br>
+                            <small>Posted on {{ comment.date_created.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No comments yet. Be the first to comment!</p>
             {% endif %}
         </section>
+        
+        <section class="comment-form-section">
+            <h2>Leave a Comment</h2>
+            <form method="POST" action="{{ url_for('project_page', project_id=project.id) }}">
+                <div>
+                    <textarea name="content" placeholder="Your Comment" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        
     </main>
+    
+    
 </body>
 </html>

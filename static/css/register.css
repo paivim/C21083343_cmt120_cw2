@@ -4,32 +4,32 @@
 
 body {
     
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
     background-color: #ffffff;
-    color: #161616;
+    color: #b6afaf;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
 }
 
 header {
     display: flex;
-    justify-content: space-between; /* Align logo and nav to opposite sides */
-    align-items: center; 
+    justify-content: space-between; 
     padding: 20px 40px;
-    background-color: #499ef3; /* Light background for header */
+    background-color: #f8f9fa;
     border-bottom: 1px solid #ddd;
     font-family: 'Roboto', sans-serif;
-    font-size: 10px;
-
+    font-size: 15px;
+    font-weight: bold;
     
 }
 
 .logo h1 {
     margin: 0;
     font-weight: bold;
-    color: #b5a7a7;
+    color: #a29f9f;
 }
 
 .navbar ul li {
